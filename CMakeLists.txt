@@ -15,7 +15,7 @@ enable_testing()
 
 # Библиотека калькулятора
 add_library(calculator STATIC
-    src/calculator.cpp
+    src/Calculator.cpp
 )
 
 target_include_directories(calculator
