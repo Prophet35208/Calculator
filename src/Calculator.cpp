@@ -4,7 +4,7 @@
 
 double Calculator::add(double a, double b)
 {
-    return a + b + 5;
+    return a + b;
 }
 
 double Calculator::subtract(double a, double b)
