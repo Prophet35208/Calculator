@@ -7,7 +7,6 @@ protected:
     Calculator calc;
 };
 
-// ����� ��� ��������
 TEST_F(CalculatorTest, AddPositiveNumbers)
 {
     EXPECT_DOUBLE_EQ(calc.add(2, 3), 5);
@@ -27,7 +26,6 @@ TEST_F(CalculatorTest, AddZero)
     EXPECT_DOUBLE_EQ(calc.add(0, 0), 0);
 }
 
-// ����� ��� ���������
 TEST_F(CalculatorTest, SubtractPositiveNumbers)
 {
     EXPECT_DOUBLE_EQ(calc.subtract(5, 3), 2);
@@ -40,7 +38,6 @@ TEST_F(CalculatorTest, SubtractNegativeNumbers)
     EXPECT_DOUBLE_EQ(calc.subtract(5, -3), 8);
 }
 
-// ����� ��� ���������
 TEST_F(CalculatorTest, MultiplyPositiveNumbers)
 {
     EXPECT_DOUBLE_EQ(calc.multiply(2, 3), 6);
@@ -59,7 +56,6 @@ TEST_F(CalculatorTest, MultiplyNegativeNumbers)
     EXPECT_DOUBLE_EQ(calc.multiply(-2, -3), 6);
 }
 
-// ����� ��� �������
 TEST_F(CalculatorTest, DividePositiveNumbers)
 {
     EXPECT_DOUBLE_EQ(calc.divide(6, 2), 3);
@@ -77,7 +73,6 @@ TEST_F(CalculatorTest, DivideNegativeNumbers)
     EXPECT_DOUBLE_EQ(calc.divide(-6, -2), 3);
 }
 
-// ����� ��� ���������� � �������
 TEST_F(CalculatorTest, PowerPositiveExponent)
 {
     EXPECT_DOUBLE_EQ(calc.power(2, 3), 8);
@@ -96,7 +91,6 @@ TEST_F(CalculatorTest, PowerNegativeExponent)
     EXPECT_DOUBLE_EQ(calc.power(4, -2), 0.0625);
 }
 
-// ����� ��� ����������
 TEST_F(CalculatorTest, FactorialOfZero)
 {
     EXPECT_EQ(calc.factorial(0), 1);
@@ -118,7 +112,6 @@ TEST_F(CalculatorTest, FactorialOfNegativeNumber)
     EXPECT_THROW(calc.factorial(-1), std::invalid_argument);
 }
 
-// ����� ��� �������� ������� �����
 TEST_F(CalculatorTest, PrimeNumbers)
 {
     EXPECT_TRUE(calc.isPrime(2));

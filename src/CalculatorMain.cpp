@@ -1,7 +1,8 @@
 ﻿#include "Calculator.h"
 #include <iostream>
-#include <string>
 #include <limits>
+#include <chrono>
+#include <thread>
 
 void printMenu()
 {
@@ -23,13 +24,32 @@ int main()
     int choice;
     double a, b;
     int n;
+    int errorCount = 0; // Счетчик ошибок
 
     std::cout << "Welcome to calculator!" << std::endl;
 
     while (true)
     {
         printMenu();
-        std::cin >> choice;
+
+        if (!(std::cin >> choice))
+        {
+            std::cin.clear();                                                   // Сбрасываем ошибку
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Очищаем буфер
+            std::cout << "Invalid input. Please enter a number." << std::endl;
+
+            errorCount++;
+            if (errorCount >= 5)
+            {
+                std::cout << "Too many errors. Exiting..." << std::endl;
+                break; // Выход после 5 ошибок
+            }
+
+            std::this_thread::sleep_for(std::chrono::milliseconds(500)); // Пауза 0.5 сек
+            continue;
+        }
+
+        errorCount = 0; // Сброс счетчика при успешном вводе
 
         if (choice == 8)
         {
