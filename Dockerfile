@@ -22,7 +22,7 @@ FROM builder AS tester
 CMD ["/app/build/bin/calculator_tests"]
 
 # Этап 3: Артефакт
-FROM debian:buster-slim AS runtime
+FROM debian:bookworm-slim AS runtime
 
 # Устанавливаем runtime библиотеки
 RUN apt-get update && apt-get install -y libstdc++6 && rm -rf /var/lib/apt/lists/*
