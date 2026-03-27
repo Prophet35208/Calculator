@@ -1,20 +1,95 @@
-﻿// Calculator.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
+﻿#include "calculator.h"
 #include <iostream>
+#include <string>
+#include <limits>
 
-int main()
-{
-    std::cout << "Hello World!\n";
+void printMenu() {
+    std::cout << "\nMenu" << std::endl;
+    std::cout << "1. Add" << std::endl;
+    std::cout << "2. Subtract" << std::endl;
+    std::cout << "3. Multiply" << std::endl;
+    std::cout << "4. Divide" << std::endl;
+    std::cout << "5. Power" << std::endl;
+    std::cout << "6. Factorial" << std::endl;
+    std::cout << "7. Check Prime" << std::endl;
+    std::cout << "8. Exit" << std::endl;
+    std::cout << "Choose operation (1-8): ";
 }
 
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
+int main() {
+    Calculator calc;
+    int choice;
+    double a, b;
+    int n;
 
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
+    std::cout << "Welcome to calculator!" << std::endl;
+
+    while (true) {
+        printMenu();
+        std::cin >> choice;
+
+        if (choice == 8) {
+            std::cout << "Goodbye!" << std::endl;
+            break;
+        }
+
+        try {
+            switch (choice) {
+            case 1:
+                std::cout << "Enter two numbers: ";
+                std::cin >> a >> b;
+                std::cout << a << " + " << b << " = " << calc.add(a, b) << std::endl;
+                break;
+
+            case 2:
+                std::cout << "Enter two numbers: ";
+                std::cin >> a >> b;
+                std::cout << a << " - " << b << " = " << calc.subtract(a, b) << std::endl;
+                break;
+
+            case 3:
+                std::cout << "Enter two numbers: ";
+                std::cin >> a >> b;
+                std::cout << a << " * " << b << " = " << calc.multiply(a, b) << std::endl;
+                break;
+
+            case 4:
+                std::cout << "Enter two numbers: ";
+                std::cin >> a >> b;
+                std::cout << a << " / " << b << " = " << calc.divide(a, b) << std::endl;
+                break;
+
+            case 5:
+                std::cout << "Enter base and exponent: ";
+                std::cin >> a >> b;
+                std::cout << a << "^" << b << " = " << calc.power(a, b) << std::endl;
+                break;
+
+            case 6:
+                std::cout << "Enter a non-negative integer: ";
+                std::cin >> n;
+                std::cout << n << "! = " << calc.factorial(n) << std::endl;
+                break;
+
+            case 7:
+                std::cout << "Enter an integer: ";
+                std::cin >> n;
+                std::cout << n << (calc.isPrime(n) ? " is prime" : " is not prime") << std::endl;
+                break;
+
+            default:
+                std::cout << "Invalid choice. Please try again." << std::endl;
+                break;
+            }
+        }
+        catch (const std::exception& e) {
+            std::cout << "Error: " << e.what() << std::endl;
+        }
+
+        // Очистка буфера ввода
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+
+    return 0;
+}
