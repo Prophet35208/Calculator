@@ -1,9 +1,10 @@
-﻿#include "calculator.h"
+﻿#include "Calculator.h"
 #include <iostream>
 #include <string>
 #include <limits>
 
-void printMenu() {
+void printMenu()
+{
     std::cout << "\nMenu" << std::endl;
     std::cout << "1. Add" << std::endl;
     std::cout << "2. Subtract" << std::endl;
@@ -16,7 +17,8 @@ void printMenu() {
     std::cout << "Choose operation (1-8): ";
 }
 
-int main() {
+int main()
+{
     Calculator calc;
     int choice;
     double a, b;
@@ -24,17 +26,21 @@ int main() {
 
     std::cout << "Welcome to calculator!" << std::endl;
 
-    while (true) {
+    while (true)
+    {
         printMenu();
         std::cin >> choice;
 
-        if (choice == 8) {
+        if (choice == 8)
+        {
             std::cout << "Goodbye!" << std::endl;
             break;
         }
 
-        try {
-            switch (choice) {
+        try
+        {
+            switch (choice)
+            {
             case 1:
                 std::cout << "Enter two numbers: ";
                 std::cin >> a >> b;
@@ -82,7 +88,8 @@ int main() {
                 break;
             }
         }
-        catch (const std::exception& e) {
+        catch (const std::exception &e)
+        {
             std::cout << "Error: " << e.what() << std::endl;
         }
 
