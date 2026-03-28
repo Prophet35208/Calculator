@@ -26,7 +26,7 @@ int main()
     int n;
     int errorCount = 0; // Счетчик ошибок
 
-    std::cout << "Welcome to calculator!!!" << std::endl;
+    std::cout << "Welcome to calculator!" << std::endl;
 
     while (true)
     {
